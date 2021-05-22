@@ -1,0 +1,2 @@
+class BookShow < ApplicationRecord
+end
