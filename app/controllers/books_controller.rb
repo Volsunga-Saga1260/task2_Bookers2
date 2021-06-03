@@ -5,9 +5,10 @@ class BooksController < ApplicationController
     @books = Book.all
     @book = Book.new
   end
-  
+
   def show
     @book = Book.find(params[:id])
+    @book_comment = BookComment.new
     @user = @book.user
     @book_new = Book.new
   end
@@ -50,7 +51,7 @@ class BooksController < ApplicationController
   def book_params
     params.require(:book).permit(:title, :body)
   end
-  
+
   def book
     @book = Book.find(params[:id])
     unless @book.user_id == current_user.id
